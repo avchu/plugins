@@ -267,10 +267,10 @@ class MethodCallHandlerImpl
     BillingFlowParams.SubscriptionUpdateParams.Builder subscriptionUpdateParamsBuilder =
         BillingFlowParams.SubscriptionUpdateParams.newBuilder();
     if (oldSku != null && !oldSku.isEmpty() && purchaseToken != null) {
-      subscriptionUpdateParamsBuilder.setOldPurchaseToken(purchaseToken);
+      subscriptionUpdateParamsBuilder.setOldSkuPurchaseToken(purchaseToken);
       // The proration mode value has to match one of the following declared in
       // https://developer.android.com/reference/com/android/billingclient/api/BillingFlowParams.ProrationMode
-      subscriptionUpdateParamsBuilder.setReplaceProrationMode(prorationMode);
+      subscriptionUpdateParamsBuilder.setReplaceSkusProrationMode(prorationMode);
       paramsBuilder.setSubscriptionUpdateParams(subscriptionUpdateParamsBuilder.build());
     }
     result.success(
@@ -330,7 +330,7 @@ class MethodCallHandlerImpl
     }
 
     billingClient.queryPurchaseHistoryAsync(
-        SkuDetailsParams.newBuilder().setType(skuType).build(),
+        skuType,
         new PurchaseHistoryResponseListener() {
           @Override
           public void onPurchaseHistoryResponse(
