@@ -29,7 +29,6 @@ import com.android.billingclient.api.Purchase;
 import com.android.billingclient.api.PurchaseHistoryRecord;
 import com.android.billingclient.api.PurchaseHistoryResponseListener;
 import com.android.billingclient.api.PurchasesResponseListener;
-import com.android.billingclient.api.QueryPurchaseHistoryParams;
 import com.android.billingclient.api.SkuDetails;
 import com.android.billingclient.api.SkuDetailsParams;
 import com.android.billingclient.api.SkuDetailsResponseListener;
@@ -331,7 +330,7 @@ class MethodCallHandlerImpl
     }
 
     billingClient.queryPurchaseHistoryAsync(
-        QueryPurchaseHistoryParams.newBuilder().setProductType(skuType).build(),
+        SkuDetailsParams.newBuilder().setType(skuType).build(),
         new PurchaseHistoryResponseListener() {
           @Override
           public void onPurchaseHistoryResponse(
