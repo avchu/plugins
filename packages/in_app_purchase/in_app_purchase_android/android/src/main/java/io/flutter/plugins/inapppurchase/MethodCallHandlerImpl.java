@@ -308,7 +308,7 @@ class MethodCallHandlerImpl
     SkuDetailsParams.Builder paramsBuilder = SkuDetailsParams.newBuilder();
     paramsBuilder.setType(skuType);
     billingClient.queryPurchasesAsync(
-        paramsBuilder.build(),
+        skuType,
         new PurchasesResponseListener() {
           @Override
           public void onQueryPurchasesResponse(
