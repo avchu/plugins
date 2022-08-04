@@ -30,7 +30,6 @@ import com.android.billingclient.api.PurchaseHistoryRecord;
 import com.android.billingclient.api.PurchaseHistoryResponseListener;
 import com.android.billingclient.api.PurchasesResponseListener;
 import com.android.billingclient.api.QueryPurchaseHistoryParams;
-import com.android.billingclient.api.QueryPurchasesParams;
 import com.android.billingclient.api.SkuDetails;
 import com.android.billingclient.api.SkuDetailsParams;
 import com.android.billingclient.api.SkuDetailsResponseListener;
@@ -307,8 +306,8 @@ class MethodCallHandlerImpl
 
     // Like in our connect call, consider the billing client responding a "success" here regardless
     // of status code.
-    QueryPurchasesParams.Builder paramsBuilder = QueryPurchasesParams.newBuilder();
-    paramsBuilder.setProductType(skuType);
+    SkuDetailsParams.Builder paramsBuilder = SkuDetailsParams.newBuilder();
+    paramsBuilder.setType(skuType);
     billingClient.queryPurchasesAsync(
         paramsBuilder.build(),
         new PurchasesResponseListener() {
